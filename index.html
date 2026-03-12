@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Congresso Estadual de Missões – IBN Caxias do Sul/RS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #0a0a1a;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0d1b4b 0%, #1a0a3d 40%, #0d1b4b 100%);
+      padding: 60px 20px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .logo-area { margin-bottom: 24px; position: relative; z-index: 1; }
+    .logo-circle {
+      width: 110px; height: 110px; border-radius: 50%;
+      background: linear-gradient(145deg, #d4af37, #f5d060, #b8860b);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      box-shadow: 0 0 40px rgba(212,175,55,0.5);
+      font-size: 48px;
+    }
+    .church-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #d4af37;
+      text-transform: uppercase;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212,175,55,0.15);
+      border: 1px solid rgba(212,175,55,0.4);
+      color: #d4af37;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 6vw, 52px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+
+    .hero h1 span { color: #d4af37; }
+
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 14px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 200px;
+      backdrop-filter: blur(10px);
+    }
+
+    .info-card .icon { font-size: 28px; }
+    .info-card .label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #d4af37;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: block;
+    }
+    .info-card .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .divider { height: 4px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+
+    .form-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 50px 20px 80px;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #d4af37;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .section-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .form-block {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 30px;
+      margin-bottom: 24px;
+    }
+
+    .form-block-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: #d4af37;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-row.single { grid-template-columns: 1fr; }
+
+    @media (max-width: 560px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+    .form-group:last-child { margin-bottom: 0; }
+
+    label {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    label .req { color: #d4af37; margin-left: 2px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="tel"],
+    select,
+    textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: #fff;
+      font-family: 'Open Sans', sans-serif;
+      transition: all 0.3s ease;
+      outline: none;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="date"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #d4af37;
+      background: rgba(212,175,55,0.06);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+    }
+
+    input::placeholder,
+    textarea::placeholder { color: rgba(255,255,255,0.3); }
+    select option { background: #1a1a3a; color: #fff; }
+    textarea { resize: vertical; min-height: 90px; }
+
+    .radio-group,
+    .check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .radio-group.inline,
+    .check-group.inline {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .radio-item,
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      transition: all 0.25s ease;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+    }
+    .radio-item:hover,
+    .check-item:hover {
+      border-color: rgba(212,175,55,0.4);
+      background: rgba(212,175,55,0.06);
+    }
+    .radio-item input,
+    .check-item input {
+      accent-color: #d4af37;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .payment-box {
+      background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(212,175,55,0.05));
+      border: 1px solid rgba(212,175,55,0.35);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 22px;
+    }
+    .payment-box h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #d4af37;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .payment-box p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+    .payment-box strong { color: #fff; }
+    .pix-value {
+      font-size: 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      color: #d4af37;
+      margin: 10px 0 4px;
+      display: block;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #d4af37, #f5d060, #b8860b);
+      border: none;
+      border-radius: 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: #0d1b4b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(212,175,55,0.35);
+      margin-top: 10px;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(212,175,55,0.5);
+    }
+    .btn-submit:active { transform: translateY(0); }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 50px 30px;
+    }
+    .success-msg .check-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .success-msg h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #d4af37;
+      margin-bottom: 14px;
+    }
+    .success-msg p {
+      color: rgba(255,255,255,0.75);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+    }
+    .footer span { color: #d4af37; }
+
+    .hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="logo-area">
+    <div class="logo-circle">✝</div>
+    <p class="church-name">Igreja Batista Nacional – Caxias do Sul/RS</p>
+  </div>
+  <div class="hero-badge">Inscrições Abertas</div>
+  <h1>Congresso Estadual<br/>de <span>Missões</span></h1>
+  <p class="hero-sub">IBN Caxias do Sul • Rio Grande do Sul</p>
+  <div class="info-cards">
+    <div class="info-card">
+      <span class="icon">📅</span>
+      <div>
+        <span class="label">Data</span>
+        <span class="value">11 e 12 de Abril</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="icon">📍</span>
+      <div>
+        <span class="label">Local</span>
+        <span class="value">Rua Tronca, 3333 – Rio Branco<br/>Caxias do Sul/RS</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="icon">💰</span>
+      <div>
+        <span class="label">Inscrição</span>
+        <span class="value">R$ 15,00 por pessoa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="form-section">
+
+  <p class="section-title">Formulário</p>
+  <h2 class="section-heading">Faça sua inscrição</h2>
+
+  <form id="inscricaoForm" onsubmit="submitForm(event)">
+
+    <div class="form-block">
+      <p class="form-block-title">01 – Dados Pessoais</p>
+
+      <div class="form-row single">
+        <div class="form-group">
+          <label for="nome">Nome completo <span class="req">*</span></label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nascimento">Data de nascimento <span class="req">*</span></label>
+          <input type="date" id="nascimento" name="nascimento" required/>
+        </div>
+        <div class="form-group">
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14"/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">E-mail <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label for="telefone">WhatsApp <span class="req">*</span></label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required/>
+        </div>
+      </div>
+
+      <div class="form-row single">
+        <div class="form-group">
+          <label for="cidade">Cidade / Estado <span class="req">*</span></label>
+          <input type="text" id="cidade" name="cidade" placeholder="Ex: Caxias do Sul/RS" required/>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-block">
+      <p class="form-block-title">02 – Informações da Igreja</p>
+
+      <div class="form-row single">
+        <div class="form-group">
+          <label for="nomeIgreja">Nome da igreja <span class="req">*</span></label>
+          <input type="text" id="nomeIgreja" name="nomeIgreja" placeholder="Ex: IBN – Bairro/Cidade" required/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cidadeIgreja">Cidade / Estado da igreja <span class="req">*</span></label>
+          <input type="text" id="cidadeIgreja" name="cidadeIgreja" placeholder="Ex: Porto Alegre/RS" required/>
+        </div>
+        <div class="form-group">
+          <label for="pastor">Nome do pastor responsável <span class="req">*</span></label>
+          <input type="text" id="pastor" name="pastor" placeholder="Nome do pastor" required/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Função na igreja <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="funcao" value="Membro" required/> Membro</label>
+          <label class="radio-item"><input type="radio" name="funcao" value="Pastor(a)"/> Pastor(a)</label>
+          <label class="radio-item"><input type="radio" name="funcao" value="Líder de ministério"/> Líder de ministério</label>
+          <label class="radio-item"><input type="radio" name="funcao" value="Missionário(a)"/> Missionário(a)</label>
+          <label class="radio-item"><input type="radio" name="funcao" value="Visitante"/> Visitante</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>É membro da IBN Caxias do Sul/RS? <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="membroIBN" value="Sim" required/> Sim</label>
+          <label class="radio-item"><input type="radio" name="membroIBN" value="Não"/> Não</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-block">
+      <p class="form-block-title">03 – Participação no Congresso</p>
+
+      <div class="form-group">
+        <label>Dias de participação <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="dias" value="Ambos os dias (11 e 12/04)" required/> Ambos os dias (11 e 12 de abril)</label>
+          <label class="radio-item"><input type="radio" name="dias" value="Somente dia 11/04"/> Somente dia 11 de abril</label>
+          <label class="radio-item"><input type="radio" name="dias" value="Somente dia 12/04"/> Somente dia 12 de abril</label>
+          <label class="radio-item"><input type="radio" name="dias" value="Ainda não sei"/> Ainda não tenho certeza</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Precisa de hospedagem? <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="hospedagem" value="Sim" required/> Sim</label>
+          <label class="radio-item"><input type="radio" name="hospedagem" value="Não"/> Não</label>
+          <label class="radio-item"><input type="radio" name="hospedagem" value="Talvez"/> Talvez</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Precisa de alimentação organizada pela igreja? <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="alimentacao" value="Sim" required/> Sim</label>
+          <label class="radio-item"><input type="radio" name="alimentacao" value="Não"/> Não</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="restricao">Possui restrição alimentar?</label>
+        <input type="text" id="restricao" name="restricao" placeholder="Ex: intolerância à lactose, alergia a glúten..."/>
+      </div>
+
+      <div class="form-group">
+        <label>Interesse em camiseta do congresso?</label>
+        <p style="font-size:12px; color:rgba(255,255,255,0.45); margin-bottom:10px;">As camisetas estarão disponíveis para compra somente no dia do evento.</p>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="camiseta" value="Sim, tenho interesse"/> Sim, tenho interesse</label>
+          <label class="radio-item"><input type="radio" name="camiseta" value="Não tenho interesse"/> Não tenho interesse</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-block">
+      <p class="form-block-title">04 – Pagamento da Inscrição</p>
+
+      <div class="payment-box">
+        <h4>💰 Informações de Pagamento</h4>
+        <span class="pix-value">R$ 15,00</span>
+        <p>Valor por inscrito(a). A inscrição será confirmada após o pagamento.</p>
+        <p><strong>Chave Pix:</strong> missionariosibn@gmail.com</p>
+        <p><strong>Titular:</strong> Igreja Batista Nacional</p>
+        <p><strong>Banco:</strong> Sicred</p>
+        <p style="margin-top:10px; color: rgba(255,255,255,0.5); font-size: 12px;">Dúvidas? Fale com a secretaria da IBN Caxias do Sul.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Forma de pagamento <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="pagamento" value="Pix" required/> Pix</label>
+          <label class="radio-item"><input type="radio" name="pagamento" value="Dinheiro"/> Dinheiro</label>
+          <label class="radio-item"><input type="radio" name="pagamento" value="Isento(a)"/> Isento(a)</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Situação do pagamento <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="statusPag" value="Já paguei" required/> Já realizei o pagamento</label>
+          <label class="radio-item"><input type="radio" name="statusPag" value="Ainda vou pagar"/> Ainda vou pagar</label>
+          <label class="radio-item"><input type="radio" name="statusPag" value="Sou isento(a)"/> Sou isento(a) (equipe / preletor / convite)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-block">
+      <p class="form-block-title">05 – Observações e Consentimento</p>
+
+      <div class="form-group">
+        <label>Como ficou sabendo do congresso?</label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="como"/> Igreja local</label>
+          <label class="radio-item"><input type="radio" name="como"/> Redes sociais</label>
+          <label class="radio-item"><input type="radio" name="como"/> Amigos/família</label>
+          <label class="radio-item"><input type="radio" name="como"/> Liderança regional</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="obs">Observações ou pedido de oração</label>
+        <textarea id="obs" name="obs" placeholder="Deixe aqui sua mensagem, se desejar..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Autorização de uso de imagem <span class="req">*</span></label>
+        <p style="font-size:12px; color:rgba(255,255,255,0.5); margin-bottom:12px; line-height:1.6;">
+          Autorizo o uso da minha imagem em fotos e vídeos feitos durante o Congresso Estadual de Missões da IBN Caxias do Sul/RS para divulgação nas redes sociais e materiais da igreja, sem fins lucrativos.
+        </p>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="imagem" value="Sim, autorizo" required/> Sim, autorizo</label>
+          <label class="radio-item"><input type="radio" name="imagem" value="Não autorizo"/> Não autorizo</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Confirmação dos dados <span class="req">*</span></label>
+        <label class="check-item">
+          <input type="checkbox" id="confirma" name="confirma" required/>
+          Declaro que as informações prestadas são verdadeiras e estou ciente das orientações sobre o Congresso Estadual de Missões da IBN Caxias do Sul/RS.
+        </label>
+      </div>
+
+      <p class="hint"><span class="req">*</span> Campos obrigatórios</p>
+    </div>
+
+    <button type="submit" class="btn-submit">✉ Enviar Inscrição</button>
+
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    <span class="check-icon">✅</span>
+    <h2>Inscrição enviada com sucesso!</h2>
+    <p>
+      Obrigado(a) por se inscrever no<br/>
+      <strong style="color:#fff;">Congresso Estadual de Missões – IBN Caxias do Sul/RS</strong><br/><br/>
+      Nos dias <strong style="color:#d4af37;">11 e 12 de abril</strong>, na Rua Tronca, 3333 – Bairro Rio Branco – Caxias do Sul/RS.<br/><br/>
+      Se ainda não realizou o pagamento, finalize-o o quanto antes para garantir sua vaga.<br/><br/>
+      <em style="color:#d4af37;">Deus abençoe sua vida e seu chamado missionário!</em>
+    </p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <p>© 2025 <span>Igreja Batista Nacional – Caxias do Sul/RS</span></p>
+  <p style="margin-top:6px;">Rua Tronca, 3333 – Bairro Rio Branco – Caxias do Sul/RS</p>
+</footer>
+
+<script>
+  document.getElementById('cpf').addEventListener('input', function (e) {
+    let v = e.target.value.replace(/\D/g, '').substring(0, 11);
+    v = v.replace(/(\d{3})(\d)/, '$1.$2');
+    v = v.replace(/(\d{3})(\d)/, '$1.$2');
+    v = v.replace(/(\d{3})(\d{1,2})
+$
+/, '$1-$2');
+    e.target.value = v;
+  });
+
+  document.getElementById('telefone').addEventListener('input', function (e) {
+    let v = e.target.value.replace(/\D/g, '').substring(0, 11);
+    if (v.length <= 10) {
+      v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+    } else {
+      v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+    }
+    e.target.value = v;
+  });
+
+  function submitForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('inscricaoForm');
+    const success = document.getElementById('successMsg');
+    form.style.display = 'none';
+    success.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
