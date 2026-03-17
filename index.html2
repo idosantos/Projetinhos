@@ -364,7 +364,7 @@
     onerror="this.style.display='none'"
   />
   <div class="topbar-text">
-    <strong>IBN Caxias do Sul</strong>
+    <strong></strong>
     <span>Caxias do Sul – RS</span>
   </div>
 </div>
@@ -392,7 +392,7 @@
       <span class="icon">📍</span>
       <div>
         <span class="label">Local</span>
-        <span class="value">Rua Tronca, 3333<br/>Bairro Rio Branco – Caxias do Sul/RS<br/>Igreja Batista Nacional</span>
+        <span class="value">Rua Tronca, 3333<br/>Bairro Rio Branco – Caxias do Sul/RS<br/></span>
       </div>
     </div>
     <div class="info-card">
