@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Congresso Estadual de Missões – Caxias do Sul/RS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --azul:      #1a3a6b;
+      --azul-esc:  #0f2347;
+      --vermelho:  #c0392b;
+      --verm-esc:  #96281b;
+      --branco:    #ffffff;
+      --cinza-claro: #f5f6fa;
+      --cinza-texto: #444;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--cinza-claro);
+      color: var(--cinza-texto);
+      min-height: 100vh;
+    }
+
+    /* TOPO */
+    .topbar {
+      background: var(--azul-esc);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .topbar img {
+      height: 52px;
+      object-fit: contain;
+    }
+    .topbar-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .topbar-text strong {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    .topbar-text span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(160deg, var(--azul-esc) 0%, var(--azul) 55%, var(--vermelho) 100%);
+      padding: 64px 20px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(26px, 5.5vw, 50px);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+    .hero h1 span { color: #f9ca74; }
+
+    .hero-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.5px;
+    }
+
+    .versiculo {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      margin: 0 auto 40px;
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      border-left: 3px solid #f9ca74;
+      padding-left: 14px;
+      text-align: left;
+    }
+    .versiculo cite {
+      display: block;
+      margin-top: 6px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      color: #f9ca74;
+    }
+
+    .info-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .info-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 14px;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+      min-width: 190px;
+    }
+    .info-card .icon { font-size: 26px; }
+    .info-card .label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #f9ca74;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: block;
+    }
+    .info-card .value {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      display: block;
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    .faixa {
+      background: var(--vermelho);
+      padding: 14px 20px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* SEÇÃO PRINCIPAL */
+    .form-section {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 40px 20px 70px;
+    }
+
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--vermelho);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .section-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--azul-esc);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .section-desc {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 26px;
+    }
+
+    .form-block {
+      background: #fff;
+      border: 1px solid #e2e6ef;
+      border-radius: 16px;
+      padding: 26px 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 16px rgba(26,58,107,0.06);
+    }
+
+    .form-block-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: var(--azul);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--cinza-claro);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .form-block-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: var(--vermelho);
+      border-radius: 2px;
+    }
+
+    .payment-box {
+      background: linear-gradient(135deg, #eaf0fb, #f0f4fb);
+      border: 1.5px solid #c2d0ea;
+      border-radius: 14px;
+      padding: 22px 20px;
+      margin-bottom: 10px;
+    }
+    .payment-box h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--azul);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .payment-box p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 5px;
+    }
+    .payment-box strong { color: var(--azul-esc); }
+    .pix-value {
+      font-size: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      color: var(--vermelho);
+      margin: 10px 0 6px;
+      display: block;
+    }
+    .pix-key {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1.5px solid #c2d0ea;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: var(--azul-esc);
+      font-weight: 600;
+      margin: 8px 0;
+      word-break: break-all;
+    }
+
+    /* BOTÃO PARA O GOOGLE FORMS */
+    .btn-area {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .btn-inscrever {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 26px;
+      background: linear-gradient(135deg, var(--azul), var(--azul-esc));
+      border-radius: 999px;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(26,58,107,0.3);
+      transition: all 0.3s ease;
+    }
+    .btn-inscrever span.icon {
+      font-size: 18px;
+    }
+    .btn-inscrever:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 11px 26px rgba(26,58,107,0.4);
+      background: linear-gradient(135deg, var(--vermelho), var(--verm-esc));
+    }
+
+    .alert {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--azul-esc);
+      text-align: center;
+      padding: 28px 20px;
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+    }
+    .footer img {
+      height: 40px;
+      object-fit: contain;
+      margin-bottom: 12px;
+      opacity: 0.85;
+    }
+    .footer strong { color: rgba(255,255,255,0.85); }
+    .footer a {
+      color: #f9ca74;
+      text-decoration: none;
+    }
+
+    @media (max-width: 560px) {
+      .form-block { padding: 20px 16px; }
+      .info-card { min-width: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPO -->
+<div class="topbar">
+  <img
+    src="https://ibncaxiasdosul.com.br/wp-content/uploads/2023/01/logo-ibn-caxias.png"
+    alt="Logo IBN Caxias do Sul"
+    onerror="this.style.display='none'"
+  />
+  <div class="topbar-text">
+    <strong>IBN Caxias do Sul</strong>
+    <span>Caxias do Sul – RS</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✦ Inscrições Abertas ✦</div>
+  <h1>Congresso Estadual<br/>de <span>Missões</span></h1>
+  <p class="hero-sub">Caxias do Sul/RS</p>
+
+  <div class="versiculo">
+    "Ide, portanto, e fazei discípulos de todas as nações..."
+    <cite>Mateus 28:19</cite>
+  </div>
+
+  <div class="info-cards">
+    <div class="info-card">
+      <span class="icon">📅</span>
+      <div>
+        <span class="label">Data</span>
+        <span class="value">11 e 12 de Abril de 2025</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="icon">📍</span>
+      <div>
+        <span class="label">Local</span>
+        <span class="value">Rua Tronca, 3333<br/>Bairro Rio Branco – Caxias do Sul/RS<br/>Igreja Batista Nacional</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="icon">💰</span>
+      <div>
+        <span class="label">Inscrição</span>
+        <span class="value">R$ 15,00 por pessoa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="faixa">Garanta sua vaga — Vagas limitadas!</div>
+
+<!-- SEÇÃO PRINCIPAL -->
+<section class="form-section">
+  <p class="section-label">Inscrição Online</p>
+  <h2 class="section-heading">Como participar</h2>
+  <p class="section-desc">
+    As inscrições serão realizadas através de um formulário oficial do Google Forms.
+    Lá você preencherá seus dados pessoais, informações da igreja e detalhes da sua participação no congresso.
+  </p>
+
+  <div class="form-block">
+    <p class="form-block-title">Pagamento</p>
+    <div class="payment-box">
+      <h4>💳 Dados para Pagamento via Pix</h4>
+      <span class="pix-value">R$ 15,00</span>
+      <p>Valor por inscrito(a). A inscrição será confirmada após o pagamento.</p>
+      <p style="margin-top:12px;"><strong>Chave Pix (e-mail):</strong></p>
+      <div class="pix-key">📧 missionariosibn@gmail.com</div>
+      <p><strong>Titular:</strong> Igreja Batista Nacional</p>
+      <p><strong>Banco:</strong> Sicredi</p>
+      <p style="margin-top:10px; font-size:12px; color:#999;">
+        Após o pagamento, preencha o formulário de inscrição com os dados corretamente.
+      </p>
+    </div>
+
+    <p style="font-size:13px; color:#555; margin-bottom: 10px;">
+      Clique no botão abaixo para acessar o formulário de inscrição oficial:
+    </p>
+
+    <div class="btn-area">
+      <a
+        class="btn-inscrever"
+        href="https://docs.google.com/forms/d/SEU_LINK_AQUI/viewform"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="icon">✉</span>
+        <span>Fazer inscrição agora</span>
+      </a>
+      <p class="alert">
+        Você será redirecionado para o Google Forms. Todas as respostas ficarão salvas em uma planilha para organização do congresso.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img
+    src="https://ibncaxiasdosul.com.br/wp-content/uploads/2023/01/logo-ibn-caxias.png"
+    alt="Logo IBN Caxias do Sul"
+    onerror="this.style.display='none'"
+  />
+  <p><strong>IBN Caxias do Sul</strong></p>
+  <p style="margin-top:6px;">Rua Tronca, 3333 – Bairro Rio Branco – Caxias do Sul/RS<br/>Igreja Batista Nacional</p>
+  <p style="margin-top:6px;"><a href="https://ibncaxiasdosul.com.br" target="_blank">ibncaxiasdosul.com.br</a></p>
+</footer>
+
+</body>
+</html>
